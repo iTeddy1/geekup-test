@@ -1,4 +1,4 @@
-# ⚡ Vite + React + Redux + TailwindCSS Template
+# ⚡ PRODUCT FRONTEND TECHNICAL ASSESSMENT
 
 Một template hiện đại sử dụng [Vite](https://vitejs.dev/) kết hợp với [React](https://reactjs.org/), [Redux Toolkit](https://redux-toolkit.js.org/), [TailwindCSS](https://tailwindcss.com/), và các công cụ hỗ trợ phát triển như ESLint, Prettier, và Vitest.
 
