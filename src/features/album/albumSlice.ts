@@ -119,7 +119,6 @@ const getPhotosByAlbumIdAsync = createAsyncThunk(
   async (albumId: string, { rejectWithValue }) => {
     try {
       const res = await getPhotosByAlbumId(albumId)
-      console.log("res", res)
       return res
     } catch (error) {
       return rejectWithValue(error)
@@ -138,9 +137,6 @@ const getAlbumsByUserIdAsync = createAsyncThunk(
     }
   },
 )
-
-// export const { decrement, increment, incrementByAmount, incrementAsync } =
-//   albumSlice.actions
 
 export {
   getAllAlbumsAsync,

@@ -6,13 +6,12 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
+  SidebarTrigger,
 } from "@/components/ui/sidebar"
 import Logo from "@/common/components/Logo"
 import { Link, NavLink } from "react-router-dom"
 
-// This is sample data.
 const data = {
-  versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
   navMain: [
     {
       title: "Albums",
@@ -54,8 +53,10 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
-      <SidebarHeader>
-        <Logo />
+      <SidebarHeader className=" py-6">
+        <Link to="/" className="px-4">
+          <Logo />
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>

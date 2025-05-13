@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/app/hooks"
 import DynamicBreadcrumb from "@/common/components/Breadcrumb"
+import { LoadingSpinner } from "@/common/components/LoadingSpinner"
 import { TableWrapper } from "@/common/components/table/TableWrapper"
 import { STATUS } from "@/common/config/status"
 import { Button } from "@/components/ui/button"
@@ -40,7 +41,11 @@ export default function UserDetailsPage() {
   }, [dispatch, user])
 
   if (userStatus === STATUS.LOADING || !user || !albumsOfUser) {
-    return <div>Loading...</div>
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <LoadingSpinner />
+      </div>
+    )
   }
 
   return (

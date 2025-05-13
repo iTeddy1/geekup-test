@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@/app/hooks"
 import DynamicBreadcrumb from "@/common/components/Breadcrumb"
+import { LoadingSpinner } from "@/common/components/LoadingSpinner"
 import { STATUS } from "@/common/config/status"
 import { Button } from "@/components/ui/button"
 import {
@@ -19,11 +20,9 @@ export default function AlbumDetailsPage() {
   const { id } = useParams()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const album = useAppSelector(state => selectAlbumById(state, id!))
-  const photos = useAppSelector(state => selectPhotosByAlbumId(state, id!))
-  const user = useAppSelector(state =>
-    selectUserById(state, album?.userId as string),
-  )
+  const album = useAppSelector(state => selectAlbumById(state, +id))
+  const photos = useAppSelector(state => selectPhotosByAlbumId(state, +id))
+  const user = useAppSelector(state => selectUserById(state, album?.userId))
   const albumStatus = useAppSelector(selectStatus)
 
   useEffect(() => {
@@ -32,14 +31,17 @@ export default function AlbumDetailsPage() {
 
   useEffect(() => {
     if (id) {
-      dispatch(getAlbumByIdAsync(+id))
-      dispatch(getPhotosByAlbumIdAsync(+id))
+      dispatch(getAlbumByIdAsync(id))
+      dispatch(getPhotosByAlbumIdAsync(id))
     }
   }, [dispatch, id])
 
-  console.log("user", photos)
   if (albumStatus === STATUS.LOADING || !user || !album) {
-    return <div>Loading...</div>
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <LoadingSpinner />
+      </div>
+    )
   }
   return (
     <div>

@@ -1,10 +1,16 @@
 import { AppSidebar } from "@/components/app-sidebar"
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar"
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
-      <AppSidebar variant="sidebar" collapsible="icon" />
+      <AppSidebar variant="sidebar" collapsible="offcanvas" />
+      <SidebarTrigger />
+
       <SidebarInset>
         <div className="flex flex-1 flex-col ">
           <div className="h-16"></div>
